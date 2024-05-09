@@ -1,0 +1,71 @@
+binary -1 
+
+public class bnsearch {
+    public static void demo(Integer key) {
+        System.debug('This is binary search');
+
+        List<Integer> lon = new List<Integer>{3, 4, 5, 6, 7};
+        System.debug('List:' + lon);
+
+        Integer low = 0;
+        Integer high = lon.size() - 1;
+        Integer mid;
+        Boolean found = false;
+
+        while (low <= high) {
+            mid = (low + high) / 2;
+
+            if (lon[mid] == key) {
+                found = true;
+                break;
+            } else if (lon[mid] < key) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+
+        if (found) {
+            System.debug('Element found');
+        } else {
+            System.debug('Element not found');
+        }
+    }
+
+}
+
+
+binary -2 
+public class BinarySearchExample {
+    public static Integer binarySearch(List<Integer> arr, Integer key) {
+        Integer low = 0;
+        Integer high = arr.size() - 1;
+
+        while (low <= high) {
+            Integer mid = low + (high - low) / 2;
+
+            if (arr[mid] == key) {
+                return mid;
+            } else if (arr[mid] < key) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+
+        return -1; // Key not found
+    }
+
+    public static void main() {
+        List<Integer> sortedList = new List<Integer>{3, 5, 8, 12, 16, 23, 38, 56, 72, 91};
+        Integer keyToSearch = 23;
+
+        Integer resultIndex = binarySearch(sortedList, keyToSearch);
+
+        if (resultIndex != -1) {
+            System.debug('Element found at index: ' + resultIndex);
+        } else {
+            System.debug('Element not found in the list');
+        }
+    }
+}
